@@ -1,0 +1,53 @@
+<html>
+<head>
+<title> Start </title>
+<script src="../processing-1.4.1.js"></script>
+<script type="text/processing" data-processing-target="mycanvas">
+
+
+
+
+void setup()
+{  
+   
+  	size(800, 800);  
+  	background(100,100,100);
+  	frameRate( 30 );
+  
+    
+}  
+
+void draw()
+{
+    fill(300,100,300);
+    stroke(0,0,0);
+    strokeWeight(5);
+    rect(180,300,410,150);  
+   
+
+    if (mousePressed == true && mouseButton == LEFT)
+
+	{    
+    	if (mouseX > 180 && mouseX < 590 && mouseY >300 && mouseY <450)
+    	{	
+			link("Instructions.html");
+		}
+	}     	
+	
+ 	fill(40,10,30);
+    text("Start",300,400);
+    
+    
+}
+     
+    
+    
+
+</script>
+<canvas id="mycanvas"></canvas>
+</head>
+
+<body>
+
+</body>
+</html>

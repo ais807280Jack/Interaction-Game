@@ -1,0 +1,60 @@
+<html>
+<head>
+<title> Instructions  </title>
+<script src="../processing-1.4.1.js"></script>
+<script type="text/processing" data-processing-target="mycanvas">
+
+
+
+void setup()
+{  
+    size(1000,1000);  
+    background(100,100,100);
+    frameRate( 30 );
+    
+    
+
+}  
+
+void draw()
+{
+
+    fill(215,10,51);
+    stroke(0,0,0);
+    strokeWeight(5);
+    rect(180,10,500,500);   
+    
+    fill(100,150,10);
+    stroke(0,0,0);
+    strokeWeight(5);
+    rect(225,700,410,150);   
+
+    if (mousePressed == true && mouseButton == LEFT)
+
+	{    
+    	if (mouseX > 225 && mouseX < 635 && mouseY >700 && mouseY <850)
+    	{	
+			link("Game.html");
+		}
+	}     	
+	
+ 	fill(0,0,0);
+    text("Instructions: Dodge all falling objects by moving left to right. ",220,100);
+    text("Score: Dodge for as long as possible for maximum score. ",240,150);
+    text("Control: Use Keyboards A and D to move left and right ",270,200);
+    fill(0,0,0);
+    text("Play",390,755);
+    
+}
+
+
+
+
+</script>
+<canvas id="mycanvas"></canvas>
+</head>
+
+<body>
+
+</body>
+</html>

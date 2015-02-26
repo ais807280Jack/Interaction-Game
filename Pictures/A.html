@@ -1,0 +1,379 @@
+<html>
+<head>
+<center>
+<title> Mad Minions</title>
+<script src="../processing-1.4.1.js"></script>
+<script type="text/processing" data-processing-target="mycanvas">
+/* @pjs globalKeyEvents = "true"; */
+
+//minion control
+
+int minionX;
+int minionY;
+
+// bean positions X
+
+int blackBeanX;
+int brownBeanX;
+int greenBeanX;
+int orangeBeanX;
+int pinkBeanX;
+int purpleBeanX;
+
+// bean positions Y
+
+int blackBeanY;
+int brownBeanY;
+int greenBeanY;
+int orangeBeanY;
+int pinkBeanY;
+int purpleBeanY;
+
+// distance between beans and minion head
+
+int dBlackHead;
+int dBrownHead;
+int dGreenHead;
+int dOrangeHead;
+int dPinkHead;
+int dPurpleHead;
+
+// distance between beans and minion bottom
+
+int dBlackButt;
+int dBrownButt;
+int dGreenButt;
+int dOrangeButt;
+int dPinkButt;
+int dPurpleButt;
+
+// minion lives
+
+int lives;
+int hearts;
+
+// heart variables of beans
+int heartsBlack;
+int heartsBrown;
+int heartsGreen;
+int heartsOrange;
+int heartsPink;
+int heartsPurple;
+
+
+void setup()
+	{
+		size(800, 600);
+		frameRate( 30 );
+		gamebackground = loadImage("gamebackground.jpg");
+		character = loadImage("character.png");
+		blackBean = loadImage("blackbean.png");
+		brownBean = loadImage("brownbean.png");
+		greenBean = loadImage("greenbean.png");
+		orangeBean = loadImage("orangebean.png");
+		pinkBean = loadImage("pinkbean.png");
+		purpleBean = loadImage("purplebean.png");
+		madMinion = loadImage("madMinion.png");
+		redheart = loadImage("redheart.png");
+		minionX = 250;
+		minionY = 450; 
+		
+		// random x positions of beans 
+		
+		blackBeanX = random(10,250);
+		brownBeanX = random(250,500);
+		greenBeanX = random(10,500);
+		orangeBeanX = random(250,500);
+		pinkBeanX = random(10,250);
+		purpleBeanX = random(250,500);
+		
+		// random y positions of beans
+		
+		blackBeanY = random(-400,-800);
+		brownBeanY = random(-50,-400);
+		greenBeanY = random(-50,-800);
+		orangeBeanY = random(-50,-400);
+		pinkBeanY = random(-50,-800);
+		purpleBeanY = random(-50,-400);
+		
+		// distance between beans and minion
+		dBlackHead = 0;
+		dBrownHead = 0;
+		dGreenHead = 0;
+		dOrangeHead = 0;
+		dPinkHead = 0;
+		dPurpleHead = 0;
+	    
+	    // minion lives
+	    lives = 3;
+	    hearts = 0;
+	    heartsBlack = 0;
+        heartsBrown = 0;
+        heartsGreen = 0;
+        heartsOrange = 0;
+        heartsPink = 0;
+        heartsPurple = 0;
+	}
+
+void draw()
+	{
+	    // show background and minion
+	    
+	    image(gamebackground,0,0,800,600);
+	    image(character,minionX,minionY,80,150); 
+	    
+	    // show 3 lives (heart)
+	    
+	    if (lives == 3)
+	    { 
+	    image(redheart,615,100,48,48);
+	    image(redheart,665,100,48,48);
+	    image(redheart,715,100,48,48);
+	    }
+	    
+	    // control minion by arrow keys
+	    
+	    if (minionX > 0 && minionX < 500)
+	    { 
+	    
+	        if (keyPressed == true)
+	        {
+	    
+	        if (keyCode == LEFT)
+	        {
+		      minionX = minionX - 10;
+		    }
+		
+		    if (keyCode == RIGHT)
+	        {
+		      minionX = minionX + 10;
+		    }
+		
+	        }
+	    
+	    }
+	    
+	    // preventing minion from going infinitely left or infinitely right
+	    
+	    if (minionX == 0)
+	    {    
+	    if (keyPressed == true)
+	    {
+	    if (keyCode == RIGHT)
+	        {
+		      minionX = minionX + 10;
+		    }
+		}
+		}
+		
+		if (minionX == 500)
+	    {    
+	    if (keyPressed == true)
+	    {
+	    if (keyCode == RIGHT)
+	        {
+		      minionX = minionX - 10;
+		    }
+		}
+		}
+		
+		// show beans
+		
+		image(blackBean,blackBeanX,blackBeanY,50,50);
+		image(brownBean,brownBeanX,brownBeanY,50,50);
+		image(greenBean,greenBeanX,greenBeanY,50,50);
+		image(orangeBean,orangeBeanX,orangeBeanY,50,50);
+		image(pinkBean,pinkBeanX,pinkBeanY,50,50);
+		image(purpleBean,purpleBeanX,purpleBeanY,50,50);
+		
+        // beans moving down
+        
+        blackBeanY = blackBeanY + 8
+        brownBeanY = brownBeanY + 8
+        greenBeanY = greenBeanY + 8
+        orangeBeanY = orangeBeanY + 8
+        pinkBeanY = pinkBeanY + 8
+        purpleBeanY = purpleBeanY + 8
+        
+        //beans recurring 
+        
+        if (blackBeanY > 600)
+        {
+        blackBeanX = random(10,250);
+        blackBeanY = random(-50,-200);
+        blackBeanY = blackBeanY + 8
+        }
+        if (brownBeanY > 600)
+        {
+        brownBeanX = random(250,500);
+        brownBeanY = random(-50,-200);
+        brownBeanY = brownBeanY + 8
+        }
+        
+        if (greenBeanY > 600)
+        {
+        greenBeanX = random(10,250);
+        greenBeanY = random(-50,-200);
+        greenBeanY = greenBeanY + 8
+        }
+        
+        if (orangeBeanY > 600)
+        {
+        orangeBeanX = random(250,500);
+        orangeBeanY = random(-50,-200);
+        orangeBeanY = orangeBeanY + 8
+        }
+        
+        if (pinkBeanY > 600)
+        {
+        pinkBeanX = random(10,250);
+        pinkBeanY = random(-50,-200);
+        pinkBeanY = pinkBeanY + 8
+        }
+        
+        if (purpleBeanY > 600)
+        {
+        purpleBeanX = random(250,500);
+        purpleBeanY = random(-50,-200);
+        purpleBeanY = purpleBeanY + 8
+        }
+        
+        // minion head eclipse distance with bean
+        
+        dBlackHead = (int)sqrt(sq(blackBeanX+25-minionX-40)+sq(blackBeanY+25-minionY-75));
+        dBrownHead = (int)sqrt(sq(brownBeanX+25-minionX-40)+sq(brownBeanY+25-minionY-75));
+        dGreenHead = (int)sqrt(sq(greenBeanX+25-minionX-40)+sq(greenBeanY+25-minionY-75));
+        dOrangeHead = (int)sqrt(sq(orangeBeanX+25-minionX-40)+sq(orangeBeanY+25-minionY-75));
+        dPinkHead = (int)sqrt(sq(pinkBeanX+25-minionX-40)+sq(pinkBeanY+25-minionY-75));
+        dPurpleHead = (int)sqrt(sq(purpleBeanX+25-minionX-40)+sq(purpleBeanY+25-minionY-75));
+        
+        
+        // minion bottom eclipse distance with bean
+        
+        if (hearts == 1)
+        { 
+            lives = lives - 1;
+        }
+        
+        if (dBlackHead < 70)
+        {
+            heartsBlack = 1;
+        }
+        
+        if (dBlackHead > 70)
+        {
+            heartsBlack = 0;
+        }
+	    
+	    if (dBrownHead < 70)
+        {
+            heartsBrown = 1;
+        }
+        
+        if (dBrownHead > 70)
+        {
+            heartsBrown = 0;
+        }
+        
+        if (dGreenHead < 70)
+        {
+            heartsGreen = 1;
+        }
+        
+        if (dGreenHead > 70)
+        {
+            heartsGreen = 0;
+        }
+        
+        if (dOrangeHead < 70)
+        {
+            heartsOrange = 1;
+        }
+        
+        if (dOrangeHead > 70)
+        {
+            heartsOrange = 0;
+        }
+        
+        if (dPinkHead < 70)
+        {
+            heartsPink = 1;
+        }
+        
+        if (dPinkHead > 70)
+        {
+            heartsPink = 0;
+        }
+        
+        if (dPurpleHead < 70)
+        {
+            heartsPurple = 1;
+        }
+        
+        if (dPurpleHead > 70)
+        {
+            heartsPurple = 0;
+        }
+        
+        if (heartsBlack == 1)
+        { 
+            hearts = 1;
+        }
+        
+        if (heartsBrown == 1)
+        { 
+            hearts = 1;
+        }
+        
+        if (heartsGreen == 1)
+        { 
+            hearts = 1;
+        }
+        
+        if (heartsOrange == 1)
+        { 
+            hearts = 1;
+        }
+        
+        if (heartsPink == 1)
+        { 
+            hearts = 1;
+        }
+        
+        if (heartsPurple == 1)
+        { 
+            hearts = 1;
+        }
+
+	    // show 2 or 1 lives (heart)
+	    
+	    if (lives == 2)
+	    { 
+        image(redheart,615,100,48,48);
+	    image(redheart,665,100,48,48);
+	    }
+	    
+	    if (lives == 1)
+	    { 
+        image(redheart,615,100,48,48);
+	    }
+	    
+    fill(255,255,255);
+    text(lives,700,334);
+    
+    fill(255,255,255);
+    text(dBlackHead,600,334);
+	    
+        
+        
+
+	    
+	}
+	
+
+
+</script>
+<canvas id="mycanvas"></canvas>
+</center>
+</head>
+</html>

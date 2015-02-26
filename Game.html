@@ -1,0 +1,394 @@
+<html>
+<head>
+<title> Interaction Game </title>
+<script src="../processing-1.4.1.js"></script>
+<script type="text/processing" data-processing-target="mycanvas">
+/* @pjs globalKeyEvents = "true"; */ 
+
+int gby;
+int gbf;
+int rby;
+int rbf;
+int bby;
+int bbf;
+int xby;
+int xbf;
+int qby;
+int qbf;
+int x;
+int y;
+int z;
+int blueX;
+
+
+
+
+void setup()
+	{  
+
+    
+    
+    size( 1000, 1000 );
+	background(0,0,0);
+	
+	frameRate( 30 );
+	
+	gby = 0;
+	gbf = 0;
+	
+	rby = 0;
+	rbf = 0;
+
+	
+	bby = 0;
+	bbf = 0;
+	
+	xby = 0;
+	xbf = 0;
+	
+	qby = 0;
+	qbf = 0;
+	
+	blueX=0;
+	
+		
+	}
+
+void draw ()
+
+{
+	size(500,500);
+	background(0,0,0);
+	fill(0,255,0);
+
+	fill(0,200,255);
+
+//green ball
+ 	d = (int)sqrt(sq(50-blueX)+sq(gby-450));
+ 
+ 		if ( d<50)
+  
+  	{ 	
+  		link("Game Over.html");
+  	}	
+ 
+//pink ball
+ 	d = (int)sqrt(sq(150-blueX)+sq(rby-450));
+ 
+ 		if ( d<50)
+  
+  	{ 	
+  		link("Game Over.html");
+  	}	
+  	
+//blue ball  	
+ 	d = (int)sqrt(sq(250-blueX)+sq(bby-450));
+ 
+ 		if ( d<50)
+  
+  	{ 	
+  		link("Game Over.html");
+  	}	
+//purple ball  	
+  	d = (int)sqrt(sq(350-blueX)+sq(xby-450));
+ 
+ 		if ( d<50)
+  
+  	{ 	
+  		link("Game Over.html");
+  	}	
+ 	
+ //light blue ball	
+ 	d = (int)sqrt(sq(450-blueX)+sq(qby-450));
+ 
+ 		if ( d<50)
+  
+  	{ 	
+  		link("Game Over.html");
+  	}	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	text(d,50,50);
+
+	ellipse(blueX,450,50,50);
+
+		if (keyPressed == true)
+{
+		if (key == 'a')
+	{
+		blueX=blueX-10;
+	}
+
+		if (key == 'd')
+	{
+		blueX=blueX+10;
+	}
+}	
+
+  
+	    
+fill(0,255,0);
+
+ellipse(50,gby,50,50);
+
+ 
+		if (gbf == 0)
+
+	{
+		gby =gby+10;
+	}
+
+ 
+		if (gby > 500)
+
+	{
+		gbf = 1;
+		gby = -1;
+		gby = gby+10;
+	}
+
+ 
+		if (gbf == 1)
+
+	{
+		gby = gby-y;
+		y = random(3,5);
+	}
+
+ 
+if (gby<0)
+
+	{
+
+		gbf = 0;
+
+	}
+
+
+
+
+
+
+fill(230,92,217);
+
+ellipse(150,rby,50,50);
+
+
+
+if (rbf == 0)
+
+	{
+
+		rby =rby+7;
+
+	}
+
+if (rby > 500)
+
+	{
+
+		rbf = 1;
+		rby = -1;
+		rby = rby+7;
+
+	}
+
+
+if (rbf == 1)
+
+	{
+
+		rby = rby-y;
+
+		y = random(3,5);
+
+	}
+
+if (rby<0)
+	
+	{
+
+		rbf = 0;
+
+	}
+
+ 
+
+
+
+
+
+fill(0,0,255);
+
+ellipse(250,bby,50,50);
+
+
+
+if (bbf == 0)
+
+	{
+
+		bby =bby+9;
+
+	}
+
+ 
+if (bby > 500)
+
+	{
+
+		bbf = 1;
+		bby = -1;
+		bby = bby+9;
+
+	}
+
+ 
+if (bbf == 1)
+
+	{
+
+		bby = bby-y;
+
+		y = random(3,5);
+
+	}
+
+ 
+if (bby<0)
+
+	{
+
+		bbf = 0;
+
+	}
+
+
+
+
+fill(150,0,255);
+
+ellipse(350,xby,50,50);
+
+
+
+if (xbf == 0)
+
+	{
+
+		xby =xby+5;
+
+	}
+
+ 
+if (xby > 500)
+
+	{
+
+		xbf = 1;
+		xby = -1;
+		xby = xby+5;
+
+	}
+
+ 
+if (xbf == 1)
+
+	{
+
+		xby = xby-y;
+
+		y = random(3,5);
+
+	}
+
+ 
+if (xby<0)
+
+	{
+
+		xbf = 0;
+
+	}
+
+
+
+
+fill(0,200,255);
+
+ellipse(450,qby,50,50);
+
+
+
+if (qbf == 0)
+
+	{
+
+		qby =qby+12;
+
+	}
+
+ 
+if (qby > 500)
+
+	{
+
+		qbf = 1;
+		qby = -1;
+		qby = qby+12;
+
+	}
+
+ 
+if (qbf == 1)
+
+	{
+
+		qby = qby-y;
+
+		y = random(3,5);
+
+	}
+
+ 
+if (qby<0)
+
+	{
+
+		qbf = 0;
+
+	}
+
+
+}
+	
+
+</script>
+<canvas id="mycanvas"></canvas>
+</head>
+
+<body>
+
+</body>
+</html>
